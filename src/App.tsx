@@ -3,6 +3,7 @@ import Header from "./components/Header.tsx";
 import { useState } from "react";
 import TaskList from "./components/TaskList.tsx";
 import NewTask from "./components/NewTask.tsx";
+import { useEffect } from "react";
 
 //here we are defining a type for our task object
 //since we will be using this type in multiple places its better to export it from here so that other components can import and use it.
@@ -12,7 +13,16 @@ export type Tasks = {
   description: string;
 };
 function App() {
-  const [task, setTask] = useState<Tasks[]>([]);
+  const [task, setTask] = useState<Tasks[]>(() => {
+  const saved = localStorage.getItem("tasks");
+  return saved ? JSON.parse(saved) : [];
+});
+
+
+useEffect(() => {
+  localStorage.setItem("tasks", JSON.stringify(task));
+}, [task]);
+
 
   function handleAddTask(title: string, description: string) {
     //so to update this state here we will use the function form of the setState because we are updating based on the previous state. here we will automatically get the previous state as an argument , when react calls this function
@@ -38,20 +48,36 @@ function App() {
     });
   }
   return (
-    <main className="min-h-screen bg-gray-100 px-6 py-8">
-      <Header image={{ src: logo, alt: "logo" }}>
-        <h1 className="text-3xl font-bold text-gray-800">Task Lists</h1>
-      </Header>
+    <main className="min-h-screen px-4 py-10 bg-notebook-paper">
 
-      <div className="mt-6 flex justify-center">
-        <NewTask onAddTask={handleAddTask}/>
-      
+      <div className="max-w-2xl mx-auto space-y-10">
+
+        {/* Header */}
+        <Header image={{ src: logo, alt: "logo" }}>
+          <h1 className="text-3xl font-bold text-gray-800 font-hand">
+            Task Manager
+          </h1>
+        </Header>
+
+        {/* Input Form */}
+        <section
+          className="
+            p-6 bg-white 
+            rounded-sketch border-pencil shadow-pencil
+          "
+        >
+          <NewTask onAddTask={handleAddTask} />
+        </section>
+
+        {/* Task List */}
+        <section>
+          <TaskList task={task} onDeleteTask={handleDeleteTask} />
+        </section>
+
       </div>
 
-      <div className="mt-8">
-        <TaskList task={task} onDeleteTask={handleDeleteTask} />
-      </div>
     </main>
+
   );
 }
 

@@ -22,51 +22,111 @@ const NewTask = ({ onAddTask }: NewTaskProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white p-6 rounded-xl shadow space-y-4"
+      className="
+        bg-white 
+        p-6 
+        rounded-sketch 
+        border-pencil 
+        shadow-pencil 
+        space-y-4 
+        filter-wobble
+      "
     >
       <div>
         <label
           htmlFor="task"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="
+            block 
+            text-lg 
+            font-hand 
+            text-gray-800 
+            mb-1 
+            filter-wobble
+          "
         >
           Task title
         </label>
+
         <input
           type="text"
           id="task"
           name="task"
-          className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Enter task title"
+          className="
+            w-full 
+            px-4 py-2
+            rounded-sketch 
+            border-pencil 
+            shadow-pencil
+            bg-white 
+            font-hand
+            focus:outline-none
+            focus:ring-0
+            filter-wobble
+          "
+          placeholder="Write your task…"
         />
       </div>
 
       <div>
         <label
           htmlFor="description"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="
+            block 
+            text-lg 
+            font-hand
+            text-gray-800 
+            mb-1 
+            filter-wobble
+          "
         >
           Description
         </label>
+
         <textarea
           id="description"
           name="description"
-          className="w-full rounded-lg border border-gray-300 px-4 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Enter task description"
+          className="
+            w-full 
+            h-24 
+            px-4 py-2
+            rounded-sketch 
+            border-pencil 
+            shadow-pencil
+            bg-white 
+            font-hand
+            resize-none
+            focus:outline-none 
+            focus:ring-0
+            filter-wobble
+          "
+          placeholder="Add some details…"
         />
       </div>
 
       <button
         type="submit"
-        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition"
+        className="
+          w-full 
+          py-2 
+          bg-white 
+          rounded-sketch 
+          border-pencil 
+          shadow-pencil 
+          font-hand 
+          text-gray-900
+          hover:bg-gray-100
+          active:translate-x-1 active:translate-y-1 active:shadow-none
+          transition 
+          filter-wobble
+        "
       >
-        Add task
+        Add Task
       </button>
     </form>
   );
 };
 
 export default NewTask;
-
 
 //--- NOTES ---
 //about forms

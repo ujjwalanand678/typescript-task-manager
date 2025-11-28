@@ -9,7 +9,14 @@ type TaskListProps = {
 
 const TaskList = ({ task, onDeleteTask }: TaskListProps) => {
   return (
-    <ul className="mt-4 space-y-4">
+    <ul
+      className="
+        mt-6 
+        space-y-5 
+        font-hand 
+        filter-wobble
+      "
+    >
       {task.map((t) => (
         <li key={t.id} className="list-none">
           <TaskManager

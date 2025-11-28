@@ -1,1 +1,71 @@
 @import "tailwindcss";
+/* 1. Notebook paper background */
+.bg-notebook-paper {
+  background: repeating-linear-gradient(
+      to bottom,
+      #ffffff,
+      #ffffff 34px,
+      #dce3ff 35px
+    ),
+    repeating-linear-gradient(
+      to right,
+      #ffffff,
+      #ffffff 50px,
+      #fde2e2 52px
+    );
+  background-size: cover;
+}
+
+/* 2. Rough pencil border */
+.border-pencil {
+  border: 2px solid #444;
+  border-radius: 12px;
+  box-shadow: 2px 2px 0 #222;
+  filter: url(#pencil-roughness);
+}
+
+/* 3. Sketchy shadow */
+.shadow-pencil {
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.35);
+}
+
+/* 4. Inputs look hand-drawn */
+input, textarea {
+  border: 2px solid #444 !important;
+  border-radius: 10px !important;
+  background: #fff;
+  padding: 10px;
+  outline: none;
+  box-shadow: 2px 2px 0 #00000040;
+  font-family: "Comic Neue", "Caveat", "Patrick Hand", sans-serif;
+}
+
+/* 5. Buttons sketched */
+button {
+  border: 2px solid #333 !important;
+  background: #fff !important;
+  box-shadow: 2px 2px 0 #000 !important;
+  border-radius: 8px !important;
+  transition: all 0.1s ease;
+}
+
+button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 #000;
+}
+
+input:hover,
+textarea:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #666;
+}
+.button-delete {
+  border: 2px solid #d33 !important;
+  color: #d33;
+  background: white;
+  box-shadow: 2px 2px 0 #f5bcbc;
+}
+
+.button-delete:hover {
+  background: #ffecec;
+}
