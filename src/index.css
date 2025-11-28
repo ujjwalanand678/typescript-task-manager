@@ -7,12 +7,7 @@
       #ffffff 34px,
       #dce3ff 35px
     ),
-    repeating-linear-gradient(
-      to right,
-      #ffffff,
-      #ffffff 50px,
-      #fde2e2 52px
-    );
+    repeating-linear-gradient(to right, #ffffff, #ffffff 50px, #fde2e2 52px);
   background-size: cover;
 }
 
@@ -30,7 +25,8 @@
 }
 
 /* 4. Inputs look hand-drawn */
-input, textarea {
+input,
+textarea {
   border: 2px solid #444 !important;
   border-radius: 10px !important;
   background: #fff;
@@ -70,5 +66,8 @@ textarea:hover {
   background: #ffecec;
 }
 .font-hand {
-  font-family: "Gochi Hand", "Gloria Hallelujah", "Short Stack", cursive;
+  /* font-family: "Gochi Hand", "Gloria Hallelujah", "Short Stack", cursive; */
+  font-family:  "Short Stack", cursive;
+  /* font-family: "Indie Flower", cursive; */
+  font-weight: 600;
 }
