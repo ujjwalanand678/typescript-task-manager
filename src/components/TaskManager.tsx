@@ -1,6 +1,9 @@
+interface TaskManagerProps {
+  title: string;
+  description: string;
+}
 
-
-const TaskManager = ({title , description}: {title : string ; description : string}) => {
+const TaskManager = ({title , description}: TaskManagerProps) => {
   return (
   <article>
     <div>
