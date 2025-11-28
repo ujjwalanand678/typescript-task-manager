@@ -3,21 +3,24 @@ import TaskManager from "./TaskManager";
 import type { Tasks as TaskAlias } from "../App.tsx";
 
 type TaskListProps = {
-    task: TaskAlias[];
-}
+  task: TaskAlias[];
+  onDeleteTask: (id: number) => void; // prop for delete function . void means it does not return anything
+};
 
-const TaskList = ({task}:TaskListProps) => {
+const TaskList = ({ task, onDeleteTask }: TaskListProps) => {
   return (
-    <ul>
-         {task.map((t)=>( 
-        <li key={t.id}>
+    <ul className="mt-4 space-y-4">
+      {task.map((t) => (
+        <li key={t.id} className="list-none">
           <TaskManager
-        title= {t.title}
-        description={t.description}
-      />
+            title={t.title}
+            description={t.description}
+            id={t.id}
+            onDelete={onDeleteTask}
+          />
         </li>
       ))}
-      </ul>
+    </ul>
   );
 };
 

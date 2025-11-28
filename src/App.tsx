@@ -1,8 +1,4 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import logo from "./assets/task.png";
-import "./App.css";
 import Header from "./components/Header.tsx";
 import { useState } from "react";
 import TaskList from "./components/TaskList.tsx";
@@ -17,7 +13,6 @@ export type Tasks = {
 function App() {
   const [task, setTask] = useState<Tasks[]>([]);
 
-  //
   function handleAddTask() {
     //so to update this state here we will use the function form of the setState because we are updating based on the previous state. here we will automatically get the previous state as an argument , when react calls this function
     //if your new state depends on the old state always use the function form of the setState
@@ -27,18 +22,38 @@ function App() {
         title: "New Task",
         description: "Task Description",
       };
-      return [...prevTasks, newTask];// we are returning the updated array here . 
+      return [...prevTasks, newTask]; // we are returning the updated array here .
+    });
+  }
+
+  function handleDeleteTask(id: number) {
+    // here also we are using the function form of setState to ensure we are working with the latest state.
+    // also we are accessing the previous state via the argument prevTasks
+    //we want to return a new array that is minus the task with the given id
+    //and for that we can use filter method that is a bult-in array method in javascript
+    // filter method creates a new array from an existing array based on a condition we provide in the callback function. fro that filter recieves a function as an argument that is called for each element in the array. if the function returns true for an element that element is included in the new array otherwise its excluded.
+    setTask((prevTasks) => {
+      return prevTasks.filter((task) => task.id !== id);
     });
   }
   return (
-    <main>
+    <main className="min-h-screen bg-gray-100 px-6 py-8">
       <Header image={{ src: logo, alt: "logo" }}>
-        <h1>Task Lists</h1>
+        <h1 className="text-3xl font-bold text-gray-800">Task Lists</h1>
       </Header>
-      <button onClick={handleAddTask}>Add Task</button>
-      <TaskList task={task}/>
-     
-    
+
+      <div className="mt-6 flex justify-center">
+        <button
+          onClick={handleAddTask}
+          className="px-6 py-2 rounded-lg bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
+        >
+          Add Task
+        </button>
+      </div>
+
+      <div className="mt-8">
+        <TaskList task={task} onDeleteTask={handleDeleteTask} />
+      </div>
     </main>
   );
 }
