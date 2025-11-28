@@ -69,3 +69,6 @@ textarea:hover {
 .button-delete:hover {
   background: #ffecec;
 }
+.font-hand {
+  font-family: "Gochi Hand", "Gloria Hallelujah", "Short Stack", cursive;
+}

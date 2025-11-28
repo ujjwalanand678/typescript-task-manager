@@ -15,15 +15,18 @@ const TaskList = ({ task, onDeleteTask }: TaskListProps) => {
         space-y-5 
         font-hand 
         filter-wobble
+         text-xl
+        
       "
     >
       {task.map((t) => (
-        <li key={t.id} className="list-none">
+        <li key={t.id} className="list-none ">
           <TaskManager
             title={t.title}
             description={t.description}
             id={t.id}
             onDelete={onDeleteTask}
+            
           />
         </li>
       ))}

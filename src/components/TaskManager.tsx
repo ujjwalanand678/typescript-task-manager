@@ -26,7 +26,7 @@ const TaskManager = ({
       <div className="flex-1">
         <h2
           className="
-            text-xl 
+            text-2xl 
             font-hand 
             text-gray-900
             filter-wobble

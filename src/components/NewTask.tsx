@@ -20,7 +20,7 @@ const NewTask = ({ onAddTask }: NewTaskProps) => {
   }
 
   return (
-    <form
+ <form
       onSubmit={handleSubmit}
       className="
         bg-white 
@@ -28,101 +28,100 @@ const NewTask = ({ onAddTask }: NewTaskProps) => {
         rounded-sketch 
         border-pencil 
         shadow-pencil 
-        space-y-4 
         filter-wobble
+        w-full
       "
     >
-      <div>
-        <label
-          htmlFor="task"
-          className="
-            block 
-            text-lg 
-            font-hand 
-            text-gray-800 
-            mb-1 
-            filter-wobble
-          "
-        >
-          Task title
-        </label>
+      {/* layout: stacked on mobile, row on md+, bottom-align contents */}
+      <div className="flex flex-col md:flex-row md:items-end gap-6 w-full">
 
-        <input
-          type="text"
-          id="task"
-          name="task"
-          className="
-            w-full 
-            px-4 py-2
-            rounded-sketch 
-            border-pencil 
-            shadow-pencil
-            bg-white 
-            font-hand
-            focus:outline-none
-            focus:ring-0
-            filter-wobble
-          "
-          placeholder="Write your task…"
-        />
+        {/* Title column */}
+        <div className="flex-1 flex flex-col">
+          <label
+            htmlFor="task"
+            className="block text-2xl font-hand text-gray-800 mb-2"
+          >
+            Task Title
+          </label>
+
+          {/* keep input same height as textarea & button so bottoms line up */}
+          <input
+            type="text"
+            id="task"
+            name="task"
+            className="
+              w-full 
+              h-14                /* explicit height */
+              px-4 py-3
+              rounded-sketch 
+              border-pencil 
+              shadow-pencil
+              bg-white 
+              font-hand text-xl
+              focus:outline-none
+              filter-wobble
+            "
+            placeholder="Write your task…"
+          />
+        </div>
+
+        {/* Description column */}
+        <div className="flex-1 flex flex-col">
+          <label
+            htmlFor="description"
+            className="block text-2xl font-hand text-gray-800 mb-2"
+          >
+            Description
+          </label>
+
+          {/* make textarea the same height as input on desktop (h-14) */}
+          <textarea
+            id="description"
+            name="description"
+            className="
+              w-full 
+              h-14              /* same explicit height as input */
+              px-4 py-3
+              rounded-sketch 
+              border-pencil 
+              shadow-pencil
+              bg-white 
+              font-hand text-xl
+              resize-none
+              focus:outline-none 
+              filter-wobble
+            "
+            placeholder="Add some details…"
+          />
+        </div>
+
+        {/* Button column: align to bottom with md:items-end and this wrapper */}
+        <div className="flex items-end">
+          <button
+            type="submit"
+            className="
+              w-full md:w-auto 
+              px-8 py-3
+              bg-white 
+              rounded-sketch 
+              border-pencil 
+              shadow-pencil 
+              font-hand text-xl
+              text-gray-900
+              hover:bg-gray-100
+              active:translate-x-1 active:translate-y-1 active:shadow-none
+              transition 
+              filter-wobble
+            "
+          >
+            Add Task
+          </button>
+        </div>
       </div>
-
-      <div>
-        <label
-          htmlFor="description"
-          className="
-            block 
-            text-lg 
-            font-hand
-            text-gray-800 
-            mb-1 
-            filter-wobble
-          "
-        >
-          Description
-        </label>
-
-        <textarea
-          id="description"
-          name="description"
-          className="
-            w-full 
-            h-24 
-            px-4 py-2
-            rounded-sketch 
-            border-pencil 
-            shadow-pencil
-            bg-white 
-            font-hand
-            resize-none
-            focus:outline-none 
-            focus:ring-0
-            filter-wobble
-          "
-          placeholder="Add some details…"
-        />
-      </div>
-
-      <button
-        type="submit"
-        className="
-          w-full 
-          py-2 
-          bg-white 
-          rounded-sketch 
-          border-pencil 
-          shadow-pencil 
-          font-hand 
-          text-gray-900
-          hover:bg-gray-100
-          active:translate-x-1 active:translate-y-1 active:shadow-none
-          transition 
-          filter-wobble
-        "
-      >
-        Add Task
-      </button>
     </form>
+
+
+
   );
 };
 

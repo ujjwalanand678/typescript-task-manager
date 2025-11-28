@@ -48,9 +48,12 @@ useEffect(() => {
     });
   }
   return (
-    <main className="min-h-screen px-4 py-10 bg-notebook-paper">
+  <main className="min-h-screen w-full px-6 py-10 bg-notebook-paper">
 
-      <div className="max-w-2xl mx-auto space-y-10">
+
+      <div className="w-full max-w-8xl mx-auto space-y-12 px-4 md:px-12">
+
+
 
         {/* Header */}
         <Header image={{ src: logo, alt: "logo" }}>
