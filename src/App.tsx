@@ -2,6 +2,7 @@ import logo from "./assets/task.png";
 import Header from "./components/Header.tsx";
 import { useState } from "react";
 import TaskList from "./components/TaskList.tsx";
+import NewTask from "./components/NewTask.tsx";
 
 //here we are defining a type for our task object
 //since we will be using this type in multiple places its better to export it from here so that other components can import and use it.
@@ -13,14 +14,14 @@ export type Tasks = {
 function App() {
   const [task, setTask] = useState<Tasks[]>([]);
 
-  function handleAddTask() {
+  function handleAddTask(title: string, description: string) {
     //so to update this state here we will use the function form of the setState because we are updating based on the previous state. here we will automatically get the previous state as an argument , when react calls this function
     //if your new state depends on the old state always use the function form of the setState
     setTask((prevTasks) => {
       const newTask: Tasks = {
         id: prevTasks.length + 1, // just to ensure unique ids for each task
-        title: "New Task",
-        description: "Task Description",
+        title,
+        description,
       };
       return [...prevTasks, newTask]; // we are returning the updated array here .
     });
@@ -43,12 +44,8 @@ function App() {
       </Header>
 
       <div className="mt-6 flex justify-center">
-        <button
-          onClick={handleAddTask}
-          className="px-6 py-2 rounded-lg bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
-        >
-          Add Task
-        </button>
+        <NewTask onAddTask={handleAddTask}/>
+      
       </div>
 
       <div className="mt-8">
